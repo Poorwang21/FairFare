@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fairfare - Trip Expense Splitter</title>
+    <link rel="stylesheet" href="dpf.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fairfare</h1>
+            <p class="tagline">Split costs, not friendships!</p>
+        </header>
+
+        <main>
+            <!-- Trip Creation Section -->
+            <section id="trip-section" class="active">
+                <h2>Create New Trip</h2>
+                <div class="form-group">
+                    <label for="trip-name">Trip Name</label>
+                    <input type="text" id="trip-name" placeholder="e.g., Goa Trip">
+                </div>
+                <div class="form-group">
+                    <label for="members">Participants (comma separated)</label>
+                    <input type="text" id="members" placeholder="e.g., Alice, Bob, Charlie">
+                </div>
+                <button id="create-trip-btn" class="btn">Create Trip</button>
+            </section>
+
+            <!-- Expense Entry Section -->
+            <section id="expense-section" class="hidden">
+                <div class="header-row">
+                    <h2 id="current-trip-name">Goa Trip</h2>
+                    <button id="view-summary-btn" class="btn">View Summary</button>
+                </div>
+                
+                <div class="form-group">
+                    <label for="expense-desc">Expense Description</label>
+                    <input type="text" id="expense-desc" placeholder="e.g., Dinner at Beach Shack">
+                </div>
+                
+                <div class="form-group">
+                    <label for="expense-amount">Amount (₹)</label>
+                    <input type="number" id="expense-amount" placeholder="e.g., 1500">
+                </div>
+                
+                <div class="form-group">
+                    <label for="paid-by">Paid By</label>
+                    <select id="paid-by"></select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Split Between</label>
+                    <div id="split-between-checkboxes"></div>
+                </div>
+                
+                <button id="add-expense-btn" class="btn">Add Expense</button>
+                
+                <div class="quick-entry">
+                    <h3>Quick Notepad Entry</h3>
+                    <textarea id="quick-expense" placeholder="e.g., Bus ₹500 by Alice, only Alice and Bob"></textarea>
+                    <button id="quick-add-btn" class="btn secondary">Add Quick Entry</button>
+                </div>
+                
+                <div class="expense-list">
+                    <h3>Expenses</h3>
+                    <table id="expenses-table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Paid By</th>
+                                <th>Split Between</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="expenses-tbody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Summary Section -->
+            <section id="summary-section" class="hidden">
+                <div class="header-row">
+                    <h2 id="summary-trip-name">Goa Trip - Summary</h2>
+                    <button id="back-to-expenses" class="btn">Back to Expenses</button>
+                </div>
+                
+                <div class="summary-stats">
+                    <div class="stat-card">
+                        <h4>Total Spent</h4>
+                        <p id="total-spent">₹0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Average Per Person</h4>
+                        <p id="average-spent">₹0</p>
+                    </div>
+                </div>
+                
+                <div class="balances">
+                    <h3>Balances</h3>
+                    <table id="balances-table">
+                        <thead>
+                            <tr>
+                                <th>Person</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="balances-tbody"></tbody>
+                    </table>
+                </div>
+                
+                <div class="settlements">
+                    <h3>Settlements</h3>
+                    <p>To balance everything:</p>
+                    <ul id="settlements-list"></ul>
+                </div>
+                
+                <button id="export-btn" class="btn">Export as PDF</button>
+            </section>
+        </main>
+
+        <footer>
+            <p>Made with ❤️ for fair splits</p>
+        </footer>
+    </div>
+
+    <script src="dpf.js"></script>
+</body>
+</html>
